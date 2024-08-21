@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omar Ikanoune - Maritime Ops Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: NotoColorEmojiLimited;
+        unicode-range: U+1F1E6-1F1FF;
+        src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+      }
+
+      .imoj {
+        font-family: "NotoColorEmojiLimited", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background-color: #0a0a0a;
+        color: #00ff00;
+      }
+      .blur-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://source.unsplash.com/random/1920x1080?ocean")
+          no-repeat center center fixed;
+        background-size: cover;
+        filter: blur(10px) brightness(0.3);
+        z-index: -2;
+      }
+      .terminal {
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 1px solid #00ff00;
+        box-shadow: 0 0 10px #00ff00;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .terminal.slide-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .cursor::after {
+        content: "|";
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .ascii-icon {
+        color: #00aaff;
+        font-size: 0.8em;
+        margin-right: 5px;
+      }
+      input,
+      textarea {
+        background-color: rgba(0, 255, 0, 0.1);
+        border: 1px solid #00ff00;
+        color: #00ff00;
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        box-shadow: 0 0 15px #00ff00;
+      }
+      button {
+        background-color: #00ff00;
+        color: #0a0a0a;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #00aa00;
+      }
+      .glow {
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+        }
+        to {
+          text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+        }
+      }
+      #ship-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+        z-index: -1;
+      }
+      #ship {
+        position: absolute;
+        bottom: 10%;
+        left: -250px;
+        width: 250px;
+        height: auto;
+        animation: sail 30s linear infinite;
+      }
+      @keyframes sail {
+        0% {
+          left: -250px;
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-30px) rotate(2deg);
+        }
+        50% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-30px) rotate(-2deg);
+        }
+        100% {
+          left: 100%;
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <div class="blur-background"></div>
+    <header class="py-8 bg-black bg-opacity-50">
+      <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2 cursor glow">Omar Ikanoune</h1>
+        <p class="text-xl text-gray-400">Maritime Ops Pro</p>
+      </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 z-10">
+      <section class="mb-12 terminal p-4" id="experience">
+        <h2 class="text-xl font-bold mb-4 text-blue-400">
+          $ cat experience.txt
+        </h2>
+        <pre class="text-sm overflow-x-auto">
+<span class="ascii-icon">🏢</span>Country Ops Manager
+<span class="ascii-icon">🌐</span>Ops & Branch Manager
+<span class="ascii-icon">🚢</span>Port Agent
+<span class="ascii-icon">📊</span>Ops Planner
+            </pre>
+      </section>
+
+      <section class="mb-12 terminal p-4" id="skills">
+        <h2 class="text-xl font-bold mb-4 text-blue-400">$ ls -R skills/</h2>
+        <pre class="text-sm overflow-x-auto">
+skills/
+├── maritime-software/
+│   ├── <span class="ascii-icon">🖥️</span>Navis_EXPRESS
+│   ├── <span class="ascii-icon">🖥️</span>SPARCS
+│   └── <span class="ascii-icon">🖥️</span>IBM_LoadStar
+├── programming/
+│   ├── <span class="ascii-icon">🐍</span>Python
+│   ├── <span class="ascii-icon">🌐</span>JavaScript
+│   ├── <span class="ascii-icon">🌐</span>HTML
+│   ├── <span class="ascii-icon">🎨</span>CSS
+│   └── <span class="ascii-icon">☕</span>Java
+└── languages/
+    ├── <span class="ascii-icon imoj">🇲🇦</span>Arabic
+    ├── <span class="ascii-icon imoj">🇫🇷</span>French
+    ├── <span class="ascii-icon imoj">🇬🇧</span>English
+    └── <span class="ascii-icon imoj">🇪🇸</span>Spanish
+            </pre>
+      </section>
+
+      <section class="mb-12 terminal p-4" id="projects">
+        <h2 class="text-xl font-bold mb-4 text-blue-400">
+          $ ./list_projects.sh
+        </h2>
+        <pre class="text-sm overflow-x-auto">
+<span class="ascii-icon">📄</span>DG Manifest Populator
+   - Excel to manifests
+
+<span class="ascii-icon">🚀</span>Notice Generator
+   - Schedules to notices
+
+<span class="ascii-icon">🌐</span>Port CSV Formatter
+   - Web CSV for ports
+            </pre>
+      </section>
+
+      <section class="terminal p-4" id="contact">
+        <h2 class="text-xl font-bold mb-4 text-blue-400">$ ./contact_me.sh</h2>
+        <form id="contact-form">
+          <div class="mb-4">
+            <label for="name" class="block mb-2">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block mb-2">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="mb-4">
+            <label for="message" class="block mb-2">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="px-4 py-2">Send Message</button>
+        </form>
+        <div id="form-output" class="mt-4 hidden"></div>
+      </section>
+    </main>
+
+    <footer class="bg-black bg-opacity-50 text-gray-500 py-4 mt-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>
+          &copy; 2024 Omar Ikanoune |
+          <span class="text-green-400">root@maritime-ops:~#</span>
+        </p>
+      </div>
+    </footer>
+
+    <div id="ship-container">
+      <svg
+        id="ship"
+        viewBox="0 0 435.926 435.926"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g fill="#00ff00">
+          <path
+            d="M434.886,210.701c-1.42-2.506-4.079-4.056-6.96-4.056h-34.625v-16.208c0-4.418-3.582-8-8-8h-24.333V150.52 c0-4.418-3.582-8-8-8h-31.667v-32.281c0-4.418-3.582-8-8-8h-79.667c-4.418,0-8,3.582-8,8v32.281h-31.667c-4.418,0-8,3.582-8,8 v31.917h-24.333c-4.418,0-8,3.582-8,8v31.583h-32.333v-87.5c0-4.418-3.582-8-8-8h-96c-4.418,0-8,3.582-8,8v87.5H8 c-2.875,0-5.529,1.542-6.952,4.041c-1.423,2.498-1.396,5.568,0.071,8.04l48.63,81.985c6.023,10.034,19.391,17.601,31.093,17.601 H345.4c11.703,0,25.071-7.567,31.098-17.607l58.292-97.323C436.27,216.285,436.307,213.208,434.886,210.701z M377.301,206.645h-56 v-8.208h56V206.645z M305.301,198.437v8.314c-13.408,1.063-22.964,10.084-27.404,15.27h-36.262v-23.583H305.301z M344.968,182.437 h-64V158.52h64V182.437z M241.635,118.239h63.667v24.281h-63.667V118.239z M201.968,158.52h63v23.917h-63V158.52z M169.635,198.437 h56v23.583h-56V198.437z M25.301,142.52h80v15.417h-16c-4.418,0-8,3.582-8,8s3.582,8,8,8h16v16.25h-16c-4.418,0-8,3.582-8,8 s3.582,8,8,8h16v15.833h-80V142.52z M362.775,307.852c-3.09,5.147-11.371,9.835-17.375,9.835H80.843 c-6.003,0-14.285-4.688-17.354-9.8L22.047,238.02h91.254h168.5c2.663,0,5.176-1.361,6.662-3.571 c0.08-0.118,8.07-11.804,19.447-11.804h76.056c0.435,0.073,0.879,0.12,1.334,0.12s0.899-0.047,1.334-0.12h27.174L362.775,307.852z"
+          />
+        </g>
+      </svg>
+    </div>
+
+    <script>
+      function typeEffect(element, speed) {
+        let text = element.innerHTML;
+        element.innerHTML = "";
+        let i = 0;
+        let timer = setInterval(function () {
+          if (i < text.length) {
+            element.append(text.charAt(i));
+            i++;
+          } else {
+            clearInterval(timer);
+          }
+        }, speed);
+      }
+
+      function slideInSections() {
+        const sections = document.querySelectorAll(".terminal");
+        sections.forEach((section, index) => {
+          setTimeout(() => {
+            section.classList.add("slide-in");
+          }, index * 200);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function (event) {
+        let speedPerCharacter = 100;
+        let h1 = document.querySelector("h1");
+        typeEffect(h1, speedPerCharacter);
+
+        slideInSections();
+
+        const form = document.getElementById("contact-form");
+        const output = document.getElementById("form-output");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const formProps = Object.fromEntries(formData);
+
+          output.innerHTML = `
+                    <pre class="text-blue-400 text-sm overflow-x-auto">
+Sending message...
+------------------------
+From: ${formProps.name}
+Email: ${formProps.email}
+Message: ${formProps.message}
+------------------------
+Message sent successfully!
+                    </pre>
+                `;
+          output.classList.remove("hidden");
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>
