@@ -209,7 +209,11 @@ skills/
 
       <section class="terminal p-4" id="contact">
         <h2 class="text-xl font-bold mb-4 text-blue-400">$ ./contact_me.sh</h2>
-        <form id="contact-form">
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/mblrzgvw"
+          method="POST"
+        >
           <div class="mb-4">
             <label for="name" class="block mb-2">Name:</label>
             <input type="text" id="name" name="name" required />
@@ -290,6 +294,8 @@ skills/
           const formData = new FormData(form);
           const formProps = Object.fromEntries(formData);
 
+          form.submit();
+
           output.innerHTML = `
                     <pre class="text-blue-400 text-sm overflow-x-auto">
 Sending message...
@@ -302,6 +308,7 @@ Message sent successfully!
                     </pre>
                 `;
           output.classList.remove("hidden");
+
           form.reset();
         });
       });
